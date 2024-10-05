@@ -1,0 +1,261 @@
+@import "~bootstrap/scss/bootstrap";
+@import "./mixins.scss";
+
+$primary: #3721A5;
+$secondary: #B3B3B3;
+$info: #5A57A6;
+$light: #EFECFB;
+$dark: #1E1E1E;
+$white: #FFFFFF;
+$text: #6D6D6D;
+
+@include fontFace('regular', 'neuzeitgro-reg-webfont');
+@include fontFace('bold', 'neuzeitgro-bol-webfont');
+
+// ============= GENERAL STYLES =============
+body{
+    background: url('../assets/body__background.svg') no-repeat;
+    background-position: -8em 0px;
+    font-family: "regular", Helvetica, sans-serif;
+    font-size: 14px;
+    @include media-breakpoint-up(md){
+        background-position: -2em -1em;
+    }
+    @include media-breakpoint-up(lg){
+        background-position: top right;
+        background-size: 110vh;
+    }
+}
+
+h1, h2{
+    font-family: "bold", Helvetica, sans-serif;
+}
+
+strike{
+    font-family: "regular", Helvetica, sans-serif;
+}
+
+// ============= HEADER STYLES =============
+nav.navbar{
+    .navbar-brand{
+        height: 41px;
+        background: url('../assets/logo-mobile.svg') no-repeat center center;
+        background-size: contain;
+        text-indent: -9999px;
+        @include media-breakpoint-up(lg){
+            background: url('../assets/logo.svg') no-repeat center center;
+        }
+    }
+    .navbar-toggler{
+        border: none !important;
+        .navbar-toggler-icon{
+            background: url('../assets/menu__toggler.svg') no-repeat center center;
+        }
+    }
+    .navbar-collapse{
+        background: $primary;
+        text-align: center;
+        .nav-item{
+            margin: 0 .1em;
+            a{
+                color: $white;
+            }
+        }
+        @include media-breakpoint-up(sm){
+            background: none;
+            .b-button__primary{
+                @include button($info, $info);
+            }
+            .b-button__secondary{
+                @include button($primary, $white);
+            }
+        }
+        @include media-breakpoint-up(md){
+            .b-button__primary, .b-button__secondary{
+                padding: 0 1em;
+                margin: 0 .5em;
+            }
+        }
+        @include media-breakpoint-up(lg){
+            .b-button__primary, .b-button__secondary{
+                padding: 0 2em;
+                margin: 0 1em;
+            }
+        }
+    }
+    .dropdown-menu{
+        width: 100%;
+        background: $primary;
+        text-align: center;
+        a{
+            &:hover{
+                background: $info;
+            }
+        }
+        @include media-breakpoint-up(sm){
+            width: auto;
+        }
+    }
+}
+
+// ============= CONTENT STYLES =============
+.b-tenant-report{
+    h2{
+        color: $primary;
+        padding-right: 1em;
+        small{
+            display: block;
+        }
+        span{
+            font-size: 1.125em;
+        }
+        strike{
+            color: $secondary;
+            @include media-breakpoint-up(md){
+                display: block;
+            }
+        }
+    }
+    .card{
+        color: $primary;
+        border: none;
+        border-radius: 20px;
+        box-shadow: 4px 4px 30px 0 rgba($primary, 0.15);
+        .card-title{
+            font-size: 1.389em;
+            font-family: "bold", Helvetica, sans-serif;
+        }
+        .form-control{
+            background: $light;
+            border-radius: 6vh;
+            border: none;
+            color: $primary;
+            &::placeholder{
+                color: $secondary;
+            }
+        }
+        .btn-primary{
+            @include button($info, $info);
+        }
+    }
+}
+@include media-breakpoint-up(sm){
+    .order-xl-2{
+        z-index: -1;
+    }
+}
+.b-signals-included{
+    img{
+        width: 150px;
+        height: 334px;
+        display: block;
+        @include media-breakpoint-up(xl){
+            width: 216px;
+            height: 481px;
+        }
+    }
+    h1{
+        font-size: 2.5em;
+        color: $white;
+        span{
+            font-size: 2.3em;
+            line-height: .9em;
+        }
+        small{
+            font-size: 1.125em;
+            line-height: 0.844em;
+        }
+        @include media-breakpoint-up(sm){
+            font-size: 2.7em;
+        }
+    }
+    .b-signals-included__scroll{
+        width: 57%;
+        height: 32vh;
+        overflow-y: auto;
+        ul{
+            color: $white;
+            list-style: none;
+            font-size: 1.286em;
+            line-height: 2.222em;
+            margin-left: 0;
+            li{
+                padding-left: 2em;
+                position: relative;
+                &:before{
+                    content: url(../assets/list__icon.svg);
+                    position: absolute;
+                    left: 0;
+                    top: 6%;
+                }
+            }
+        }
+    }
+}
+
+// ============= FOOTER STYLES =============
+footer{
+    background: #F2F2F2;
+    background-size: cover;
+    .row{
+        &:first-child{
+            padding: 3em 0;
+        }
+        &:last-child{
+            padding-bottom: 3em;
+        }
+    }
+    .list-group{
+        text-align: center;
+        a, a.active{
+            background: none;
+            color: $primary;
+            border: none;
+            padding: 0;
+            &:hover{
+                text-decoration: underline;
+                background: none;
+            }
+        }
+    }
+    .b-footer-logo{
+        width: 100%;
+        margin-bottom: 2em;
+        svg{
+            width: 100%;
+            height: auto;
+        }
+    }
+    .b-footer-menu__stores{
+        a{
+            svg{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        margin-top: 3em;
+        @include media-breakpoint-up(md){
+            margin: 0;
+        }
+    }
+    .b-footer-menu__social{
+        a{
+            width: 37px;
+            height: 37px;
+            svg{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .b-copyright{
+        color: $text;
+        text-align: center;
+        margin-bottom: 0;
+    }
+    .rsc-float-button{
+        bottom: 7%;
+        right: 7%;
+        border: 2px solid $primary;
+    }
+}

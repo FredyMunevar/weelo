@@ -1,0 +1,24 @@
+@mixin fontFace($name, $file){
+    @font-face {
+        font-family: $name;
+        src: url('../fonts/'+$file+'.eot');
+        src: url('../fonts/'+$file+'.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/'+$file+'.woff2') format('woff2'),
+             url('../fonts/'+$file+'.woff') format('woff'),
+             url('../fonts/'+$file+'.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }    
+}
+
+@mixin button($bg, $border){
+    background: $bg;
+    border-radius: 6vh;
+    border: 1px solid $border;
+    font-family: "bold", Helvetica, sans-serif;
+    &:hover{
+        background: rgba($border, .4);
+        border-color: $bg;
+        color: $bg;
+    }
+}
